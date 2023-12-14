@@ -1,7 +1,10 @@
+'use client'
+
 import { cn } from '@/lib/utils'
 import { Bot, Gamepad, LayoutDashboard, Settings } from 'lucide-react'
 import { Montserrat } from 'next/font/google'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 const monserrat = Montserrat({
@@ -20,16 +23,16 @@ const routes = [
         label:"Ai correspondant",
         icon: Bot,
         href:"/ai_correspondant",
-        color:"text-purple-500"
+        color:"text-violet-500"
     },
     {
-        label:"Word games",
+        label:"Word game",
         icon: Gamepad,
         href:"/word_game",
         color:"text-orange-500"
     },
     {
-        label:"Setting",
+        label:"Settings",
         icon: Settings,
         href:"/setting",
         color:"text-gray-500"
@@ -39,7 +42,9 @@ const routes = [
 type Props = {}
 
 const Sidebar = (props: Props) => {
-  return (
+    const pathname = usePathname()
+    console.log(pathname)
+    return (
     <div className='space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white'>
         <div className='px-3 py-4 flex-1'>
             <div className='text-center text-white mb-14'>
@@ -53,7 +58,8 @@ const Sidebar = (props: Props) => {
                     <Link 
                         key={route.href} 
                         href={route.href}
-                        className='
+                        className={
+                        cn(`
                             flex 
                             group
                             text-sm
@@ -66,7 +72,11 @@ const Sidebar = (props: Props) => {
                             hover:bg-white/10
                             rounded-lg
                             transition
-                        '
+                        `, 
+                            pathname === route.href ? 
+                            'text-white bg-white/10'
+                            : 'test-zinc-400'
+                        )}
                     >
                         <div className="flex items-center flex-1">
                             <route.icon className={cn("h-5 w-5 mr-3",route.color)}/>
@@ -79,7 +89,7 @@ const Sidebar = (props: Props) => {
 
             
     </div>
-  )
+    )
 }
 
 export default Sidebar
