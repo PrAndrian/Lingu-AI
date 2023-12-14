@@ -4,6 +4,6 @@ type Props = {}
 
 export default function LandingPage({}: Props) {
   return (
-    <div>Landing Page (unprotected)</div>
+    <div>Landing Page (Unprotected)</div>
   )
-}
+} 
