@@ -6,7 +6,6 @@ type Props = {}
 export default function DashboardPage({}: Props) {
   return (
     <div>
-      <UserButton afterSignOutUrl='/'/>
     </div>
   )
 }
