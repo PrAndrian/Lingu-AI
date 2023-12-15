@@ -1,6 +1,14 @@
 import { cn } from '@/lib/utils'
 import { LucideIcon } from 'lucide-react'
 import React from 'react'
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+  
 
 interface HeadingProps  {
     title:string,
@@ -19,16 +27,28 @@ const Heading = ({
 }: HeadingProps) => {
   return (
     <>
-        <div className='px-4 lg:px-8 flex items-center gap-x-3'>
-            <div className={cn('p-2 w-fit rounded-md',bgColor)}>
-                <Icon className={cn("w-10 h-10",iconColor)}/>
+        <div className='px-4 lg:px-8 flex items-center justify-between gap-x-3 mb-8'>
+            <div className='flex items-center gap-x-3'>
+                <div className={cn('p-2 w-fit rounded-md',bgColor)}>
+                    <Icon className={cn("w-10 h-10",iconColor)}/>
+                </div>
+                <div>
+                    <h2 className='text-xl lg:text-3xl font-bold'>{title}</h2>
+                    <p className='text-sm text-muted-foreground'>
+                        {description}
+                    </p>
+                </div>
             </div>
-            <div>
-                <h2 className='text-3xl font-bold'>{title}</h2>
-                <p className='text-sm text-muted-foreground'>
-                    {description}
-                </p>
-            </div>
+            <Select>
+                <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Language" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="system">Korean</SelectItem>
+                    <SelectItem value="light">French</SelectItem>
+                    <SelectItem value="dark">English</SelectItem>
+                </SelectContent>
+            </Select>
         </div>
     </>
   )
