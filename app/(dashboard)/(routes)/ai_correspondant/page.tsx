@@ -17,22 +17,35 @@ import {
 } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import ChatCompletionRequestMessage from "openai"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+
+
 
 type Props = {}
 
 const AiCorrespondant = (props: Props) => {
+  const router = useRouter()
+  const [messages,setMessages] = useState<ChatCompletionRequestMessage[]>([])
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      prompt:""
+      prompt: ""
     }
   })
 
   const isLoading = form.formState.isSubmitting
 
   const onSubmit =  async (values : z.infer<typeof formSchema>) => {
-    console.log(values)
+    try{
+      //POST message
+    }catch(error: any){
+      console.log(error)
+    }finally{
+      router.refresh()
+    }
   }
 
   return (
@@ -52,7 +65,6 @@ const AiCorrespondant = (props: Props) => {
                 <form 
                   onSubmit={form.handleSubmit(onSubmit)} 
                   className="
-                    fixed bottom-10
                     rounded-lg
                     border
                     w-full
