@@ -33,7 +33,7 @@ interface MessageType{
   content: string,
 }
 
-const AiCorrespondant = () => {
+const WordGame = () => {
   const router = useRouter()
   const [messages,setMessages] = useState<MessageType[]>([])
 
@@ -74,11 +74,11 @@ const AiCorrespondant = () => {
     <>    
       <div className="relative h-[90vh]">
           <Heading
-            title='Ai correspondant'
-            description='Our most advenced conversation'
+            title='Word Game'
+            description='Learn new words with a game'
             icon={MessageSquare}
-            iconColor='text-violet-500'
-            bgColor='bg-violet-500/10'
+            iconColor='text-orange-500'
+            bgColor='bg-orange-500/10'
           />
           
           <div className='px-4 lg:px-8 h-[70vh] overflow-auto'>            
@@ -86,7 +86,7 @@ const AiCorrespondant = () => {
               <div className="flex flex-col-reverse gap-y-4">
                 {messages.length === 0 && !isLoading && (
                   <Empty label="Conversation"/>
-                )} 
+                )}  
 
                 {messages.map((message,index)=>(
                     <div key={index} 
@@ -154,4 +154,4 @@ const AiCorrespondant = () => {
   )
 }
 
-export default AiCorrespondant
+export default WordGame
