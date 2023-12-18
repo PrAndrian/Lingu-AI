@@ -1,14 +1,6 @@
 import { cn } from '@/lib/utils'
 import { LucideIcon } from 'lucide-react'
 import React from 'react'
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-  
 
 interface HeadingProps  {
     title:string,
@@ -39,16 +31,6 @@ const Heading = ({
                     </p>
                 </div>
             </div>
-            <Select>
-                <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Language" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectItem value="system">Korean</SelectItem>
-                    <SelectItem value="light">French</SelectItem>
-                    <SelectItem value="dark">English</SelectItem>
-                </SelectContent>
-            </Select>
         </div>
     </>
   )

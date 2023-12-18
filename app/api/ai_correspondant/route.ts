@@ -32,9 +32,10 @@ export async function POST(
       messages
     });
 
-    return NextResponse.json(response.choices[0]);
+    console.log('[CONVERSATION_RESPONSE]', response);
+
+    return NextResponse.json(response.choices[0].message);
   } catch (error) {
-    console.log('[CONVERSATION_ERROR]', error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 };
